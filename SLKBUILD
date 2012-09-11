@@ -55,7 +55,7 @@ build() {
     # patch for xz to be used outside initrd/initramfs.
 #    echo '* Applying squashfs-xz patches... *'
 #    patch -p1 < $SRC/squashfs-xz-*.patch || exit 1 
-# Adde it by Dimitris Tzemos: squashfs-xz is in kernel already so patch no need it.
+# Added by Dimitris Tzemos: squashfs-xz is in kernel already so patch no need it.
 
     # use a suitable configuration for live environnement.
     cp $SRC/config-$KVEREXTRA.live .config
