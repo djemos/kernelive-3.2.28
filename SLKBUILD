@@ -117,8 +117,8 @@ EOF
  /sbin/depmod -a -b $DEST -F $DEST/boot/System.map $KVEREXTRA || exit 1
 
 # /sbin/modprobe -l | sed -e "s/^.*\/\(.*\)\.ko$/# \/sbin\/modprobe \1/m ; s/# \(.* ac$\)/\1/ ; s/# \(.* battery$\)/\1/ ; s/# \(.* button$\)/\1/ ; s/# \(.* fan$\)/\1/ ; s/# \(.* fuse$\)/\1/ ; s/# \(.* processor$\)/\1/ ; s/# \(.* thermal$\)/\1/ ; s/# \(.* video$\)/\1/ ; s/# \(.* lp$\)/\1/ ; s/# \(.* parport$\)/\1/ ; s/# \(.* parport_pc$\)/\1/ " | sort >> etc/rc.d/rc.modules
-# Added by Dimitris Tzemos: modprobe has replaced from kmod which has no -l flag
-#the line find /lib/modules/$(uname -r) -name '*.ko' | sed -e "s#\/lib\/modules\/$(uname -r)\/##g"  is used instead of modprrobe -l 
+# Added by Dimitris Tzemos: modprobe has been replaced by kmod which has no -l flag
+# so the line find /lib/modules/$(uname -r) -name '*.ko' | sed -e "s#\/lib\/modules\/$(uname -r)\/##g"  is used instead of modprobe -l 
 find /lib/modules/$(uname -r) -name '*.ko' | sed -e "s#\/lib\/modules\/$(uname -r)\/##g" | sed -e "s/^.*\/\(.*\)\.ko$/# \/sbin\/modprobe \1/m ; s/# \(.* ac$\)/\1/ ; s/# \(.* battery$\)/\1/ ; s/# \(.* button$\)/\1/ ; s/# \(.* fan$\)/\1/ ; s/# \(.* fuse$\)/\1/ ; s/# \(.* processor$\)/\1/ ; s/# \(.* thermal$\)/\1/ ; s/# \(.* video$\)/\1/ ; s/# \(.* lp$\)/\1/ ; s/# \(.* parport$\)/\1/ ; s/# \(.* parport_pc$\)/\1/ " | sort >> etc/rc.d/rc.modules
 
  /bin/chmod 755 etc/rc.d/rc.modules
